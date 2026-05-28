@@ -1,0 +1,54 @@
+body {
+    background-color: #0b101a;
+    color: #ffffff;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0; padding: 0; overflow-x: hidden;
+}
+
+/* Навигация */
+.custom-navbar {
+    background: rgba(11, 16, 26, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 0 !important;
+}
+.navbar-brand { font-size: 1.5rem; padding-left: 20px; cursor: pointer; }
+.nav-link {
+    color: #ffffff !important; font-size: 0.8rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    padding: 1.5rem 1.2rem !important; transition: 0.3s; cursor: pointer;
+}
+.nav-item.active { background-color: #4da6ff; }
+.nav-link:hover { color: #4da6ff !important; }
+
+/* Главный экран */
+.hero-section {
+    background-image: linear-gradient(rgba(11, 16, 26, 0.5), rgba(11, 16, 26, 0.9)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072');
+    background-size: cover; background-position: center;
+    height: 85vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center; padding-top: 60px;
+}
+.hero-title { font-size: 3.5rem; font-weight: 300; margin-bottom: 1rem; }
+.btn-hero-primary { background-color: #00a0ff; color: white; border-radius: 30px; padding: 12px 35px; font-weight: 600; text-decoration: none; border: none; transition: 0.3s; }
+.btn-hero-primary:hover { background-color: #008be6; color: white; }
+
+/* История калькулятора */
+.calc-history {
+    background: rgba(11, 16, 26, 0.8); border-radius: 12px; padding: 15px; height: 140px;
+    overflow-y: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.history-item { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 6px 0; color: #94a3b8; }
+.history-item .res { color: #ff9f0a; font-weight: bold; }
+
+/* =========================================
+   Убираем стрелочки у инпутов с ценой
+   ========================================= */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+}
+input[type="number"] {
+    -moz-appearance: textfield !important;
+}
