@@ -1,6 +1,24 @@
 // frontend/utils/algorithms.js
 
-// Задание 2.10: Подсчет модулей-префиксов
+// Задание 1.1: Конкатенация (Сборка полного названия спутника)
+export function buildSatelliteName(nameParts, separator) {
+    return nameParts.join(separator);
+}
+
+// Задание 1.2: Подсчет дубликатов (Поиск дублирующихся сенсоров в системе)
+export function countDuplicateSensors(sensorsArray) {
+    const counts = {};
+    let duplicates = 0;
+    sensorsArray.forEach(sensor => {
+        counts[sensor] = (counts[sensor] || 0) + 1;
+    });
+    for (let key in counts) {
+        if (counts[key] > 1) duplicates++;
+    }
+    return duplicates;
+}
+
+// Задание 2.10: Подсчет модулей-префиксов (Твой код)
 export function countCompatiblePrefixModules(moduleCodes, targetSpec) {
     let compatibleCount = 0;
     let index = 0;
@@ -14,7 +32,7 @@ export function countCompatiblePrefixModules(moduleCodes, targetSpec) {
     return compatibleCount;
 }
 
-// Задание 3.1: Слияние конфигураций
+// Задание 3.1: Слияние конфигураций (Твой код)
 export function mergeCubeSatConfigs(...configsArray) {
     const finalConfig = {};
     let configIndex = 0;

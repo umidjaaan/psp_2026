@@ -8,15 +8,38 @@
 </head>
 <body class="bg-dark text-light">
 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary mb-4">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-info" href="#" onclick="window.navigateTo('main')">CubeSat Enterprise</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="window.navigateTo('main')">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="window.navigateTo('calculator')">Калькулятор</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="window.navigateTo('contacts')">Контакты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-warning fw-bold" href="#" onclick="window.navigateTo('tasks')">Алгоритмы (ДЗ 1)</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div id="root"></div>
 
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-
     <script type="module" src="main.js"></script>
+
 </body>
 </html>

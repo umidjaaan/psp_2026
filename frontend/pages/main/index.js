@@ -37,6 +37,9 @@ export class MainPage {
                                 <a class="nav-link" style="cursor: pointer;" onclick="window.navigateTo('contacts')">КОНТАКТЫ</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link text-info fw-bold" style="cursor: pointer;" onclick="window.navigateTo('tasks')">АЛГОРИТМЫ</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" style="cursor: pointer;">КОРЗИНА (0)</a>
                             </li>
                         </ul>
