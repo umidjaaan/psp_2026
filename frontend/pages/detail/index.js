@@ -10,10 +10,9 @@ export class DetailPage {
     }
 
     // Делаем запрос к API для получения конкретной детали
-    getData() {
-        ajax.get(urls.getComponentById(this.productId), (data) => {
-            this.renderData(data);
-        });
+    async getData() {
+        const data = await ajax.get(urls.getComponentById(this.productId));
+        this.renderData(data);
     }
 
     // Раскладываем пришедшие данные по полям ввода
@@ -78,32 +77,29 @@ export class DetailPage {
         // Отправляем запрос за данными
         this.getData();
 
-        // ЛОГИКА СОХРАНЕНИЯ ЧЕРЕЗ API
+        // ЛОГИКА СОХРАНЕНИЯ ЧЕРЕЗ API (теперь с async/await)
         const saveBtn = document.getElementById('save-btn');
         if (saveBtn) {
-            saveBtn.addEventListener('click', () => {
-                // 1. Собираем измененные данные из полей ввода
+            saveBtn.addEventListener('click', async () => { // Добавили async сюда
                 const updatedData = {
                     title: document.getElementById('edit-title').value,
                     text: document.getElementById('edit-text').value,
                     price: parseInt(document.getElementById('edit-price').value) || 0
                 };
 
-                // 2. Отправляем PATCH-запрос на сервер
-                ajax.patch(urls.updateComponentById(this.productId), updatedData, (response, status) => {
-                    if (status === 200 || status === 204) {
-                        // Визуальный эффект успешного сохранения
-                        saveBtn.innerText = '✅ Успешно!';
-                        saveBtn.classList.replace('btn-outline-warning', 'btn-success');
+                // Ждем ответа от сервера через await
+                const response = await ajax.patch(urls.updateComponentById(this.productId), updatedData);
 
-                        setTimeout(() => {
-                            saveBtn.innerText = '💾 Сохранить';
-                            saveBtn.classList.replace('btn-success', 'btn-outline-warning');
-                        }, 2000);
-                    } else {
-                        alert('Ошибка при сохранении на сервер!');
-                    }
-                });
+                if (response.status === 200 || response.status === 204) {
+                    saveBtn.innerText = '✅ Успешно!';
+                    saveBtn.classList.replace('btn-outline-warning', 'btn-success');
+                    setTimeout(() => {
+                        saveBtn.innerText = '💾 Сохранить';
+                        saveBtn.classList.replace('btn-success', 'btn-outline-warning');
+                    }, 2000);
+                } else {
+                    alert('Ошибка при сохранении на сервер!');
+                }
             });
         }
     }

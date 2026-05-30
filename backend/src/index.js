@@ -12,18 +12,20 @@ componentsService.init(DATA_FILE);
 
 app.use(express.json());
 
-// Разрешаем CORS напрямую на сервере (замена глючному расширению)
+// Разрешаем CORS напрямую на сервере
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
 
-    // Мгновенно отвечаем на проверочный запрос браузера
     if (req.method === 'OPTIONS') {
         return res.sendStatus(200);
     }
     next();
 });
+
+// НАСТРОЙКА БЭКЕНДА: Раздаем собранный Vite фронтенд как статику
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Логирующий middleware
 app.use((req, res, next) => {
@@ -31,7 +33,7 @@ app.use((req, res, next) => {
     next();
 });
 
-// Подключаем маршруты
+// Подключаем маршруты API
 app.use('/api/components', componentsRouter);
 
 app.listen(PORT, '0.0.0.0', () => {

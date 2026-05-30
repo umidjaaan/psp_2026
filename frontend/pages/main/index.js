@@ -11,14 +11,13 @@ export class MainPage {
         this.limit = 10;       // Максимальное количество карточек по умолчанию
     }
 
-    // Получаем данные с бэкенда, передавая параметр поиска
-    getData() {
-        ajax.get(urls.getComponents(this.titleQuery), (data) => {
-            if (data) {
-                this.currentData = data; // Сохраняем данные локально
-                this.renderData();       // Отрисовываем
-            }
-        });
+    // Получаем данные с бэкенда через await
+    async getData() {
+        const data = await ajax.get(urls.getComponents(this.titleQuery));
+        if (data) {
+            this.currentData = data;
+            this.renderData();
+        }
     }
 
     // Отрисовываем карточки с учетом клиентской пагинации (лимита)
